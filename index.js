@@ -2,7 +2,7 @@ console.log("A game of Rock-Paper-Scissors")
 
 // Getting user input
 function getHumanChoice () {
-    let user = prompt(" What's your decision?" ,"rock, paper or scisscors");
+    let user = prompt(" What's your decision?" ,"rock, paper or scisscors").toLocaleLowerCase();
 
     if (user === null){
         return "Ready whenever you are"
@@ -14,7 +14,7 @@ function getHumanChoice () {
     else if (user === "paper") {
         return "Paper"
     }
-    
+
     else if (user === "scissors")
         return "Scissors"
 
@@ -70,14 +70,12 @@ function getComputerChoice() {
     }
  }
 
-// getComputerChoice();
-
 // Initialize scores
 let humanScore = 0;
 let computerScore = 0;
 
-// Score board
-function scores (humanChoice, computerChoice) {
+function playGame (){
+    function playRound (humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         return "Draw";
     } else if (
@@ -94,14 +92,24 @@ function scores (humanChoice, computerChoice) {
 }
 
 // Example usage
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
 
-if (humanChoice !== "Ready whenever you are" && humanChoice !== "Enter your choice to begin.") {
-    let result = scores(humanChoice, computerChoice);
-    console.log("Human choice:", humanChoice);
-    console.log("Computer choice:", computerChoice);
-    console.log("Result:", result);
-    console.log("Human score:", humanScore);
-    console.log("Computer score:", computerScore);
-}
+
+    let round = 5;
+
+    for (let i = 1; i <= round; i++){
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+            console.log(playRound(humanChoice,computerChoice));
+            console.log("humanChoice:", humanChoice);
+            console.log("computerChoice:",computerChoice);
+            console.log("humanScore:",humanScore);
+            console.log("computerScore:", computerScore);
+        }
+    }
+
+
+
+playGame()
+
+
+
